@@ -26,10 +26,10 @@ class DishManagerTest extends BaseDishesManagerTest {
 	public void testFindWithCaloriesAmountGreaterThan() {
 		System.out.println(dishes.get(0).toString());
 		List<AbstractRestaurant> dishes = dishManager.findWithCaloriesAmountGreaterThan(500);
-		
+
 		assertEquals(1, dishes.size());
-		
+
 		assertEquals(DishType.NON_VEGETERIAN, dishes.get(0).getDishType());
-		
+
 	}
 }
