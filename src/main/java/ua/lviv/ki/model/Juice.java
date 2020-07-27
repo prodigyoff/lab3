@@ -4,9 +4,9 @@ public class Juice extends AbstractDrinks {
 
 	private JuiceType juiceType;
 
-	public Juice(int portionSizeInMililiters, int caloriesAmount, int dishPriceInUAH, int dishPopularityIndex,
+	public Juice(int portionSizeInMililiters, int caloriesAmount, int dishPriceInHryvnias, int dishPopularityIndex,
 			String dishName, DishType dishType, JuiceType juiceType) {
-		super(portionSizeInMililiters, caloriesAmount, dishPriceInUAH, dishPopularityIndex, dishName, dishType);
+		super(portionSizeInMililiters, caloriesAmount, dishPriceInHryvnias, dishPopularityIndex, dishName, dishType);
 		this.juiceType = juiceType;
 	}
 

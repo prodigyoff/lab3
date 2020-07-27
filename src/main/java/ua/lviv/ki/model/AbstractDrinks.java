@@ -7,10 +7,10 @@ public abstract class AbstractDrinks extends AbstractRestaurant {
 	public AbstractDrinks() {
 		super();
 	}
-	
-	public AbstractDrinks(int portionSizeInMililiters, int caloriesAmount, int dishPriceInUAH, int dishPopularityIndex,
+
+	public AbstractDrinks(int portionSizeInMililiters, int caloriesAmount, int dishPriceInHryvnias, int dishPopularityIndex,
 			String dishName, DishType dishType) {
-		super(caloriesAmount, dishPriceInUAH, dishPopularityIndex, dishName, dishType);
+		super(caloriesAmount, dishPriceInHryvnias, dishPopularityIndex, dishName, dishType);
 		this.portionSizeInMililiters = portionSizeInMililiters;
 	}
 

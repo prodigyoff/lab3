@@ -4,9 +4,9 @@ public class Salad extends AbstractDishes {
 
 	private int carbohydratesAmountInGrams;
 
-	public Salad(int portionWeightInGrams, int caloriesAmount, int dishPopularityIndex, int dishPriceInUAH,
+	public Salad(int portionWeightInGrams, int caloriesAmount, int dishPopularityIndex, int dishPriceInHryvnias,
 			String dishName, DishType dishType, int carbohydratesAmountInGrams) {
-		super(portionWeightInGrams, caloriesAmount, dishPopularityIndex, dishPriceInUAH, dishName, dishType);
+		super(portionWeightInGrams, caloriesAmount, dishPopularityIndex, dishPriceInHryvnias, dishName, dishType);
 		this.carbohydratesAmountInGrams = carbohydratesAmountInGrams;
 	}
 }
