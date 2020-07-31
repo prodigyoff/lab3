@@ -7,83 +7,83 @@ import ua.lviv.ki.model.SortType;
 
 public class DishManagerUtils {
 
-	private static final DishSorterByPopularity DISH_BY_POPULARITY_SORTER = new DishSorterByPopularity();
+    private static final DishSorterByPopularity DISH_BY_POPULARITY_SORTER = new DishSorterByPopularity();
 
-	public static void sortByPopularity(final List<AbstractRestaurant> dishes, final SortType sortType) {
+    public static void sortByPopularity(final List<AbstractRestaurant> dishes, final SortType sortType) {
 
-		if (sortType == SortType.ASC) {
-			
-			dishes.sort(DISH_BY_POPULARITY_SORTER);
-			
-		} else if (sortType == SortType.DESC) {
-			
-			dishes.sort(DISH_BY_POPULARITY_SORTER.reversed());
-			
-		}
-	}
+        if (sortType == SortType.ASC) {
 
-	public static void sortByPrice(final List<AbstractRestaurant> dishes, final SortType sortType) {
+            dishes.sort(DISH_BY_POPULARITY_SORTER);
 
-		if (sortType == SortType.ASC) {
-			
-			dishes.sort(new DishManagerUtils().new DishSorterByPrice());
-			
-		} else if (sortType == SortType.DESC) {
-			
-			dishes.sort(new DishManagerUtils().new DishSorterByPrice().reversed());
-			
-		}
-	}
+        } else if (sortType == SortType.DESC) {
 
-	public static void sortByPopularityAndPrice(final List<AbstractRestaurant> dishes, final SortType sortType) {
+            dishes.sort(DISH_BY_POPULARITY_SORTER.reversed());
 
-		Comparator<AbstractRestaurant> comparator = new Comparator<AbstractRestaurant>() {
+        }
+    }
 
-			@Override
-			public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
+    public static void sortByPrice(final List<AbstractRestaurant> dishes, final SortType sortType) {
 
-				int popularityComparsionResult = dish1.getDishPopularityIndex() - dish2.getDishPopularityIndex();
+        if (sortType == SortType.ASC) {
 
-				if (popularityComparsionResult != 0) {
-					
-					return popularityComparsionResult;
-					
-				}
+            dishes.sort(new DishManagerUtils().new DishSorterByPrice());
 
-				return dish1.dishPriceInHryvnias() - dish2.dishPriceInHryvnias();
-			}
-		};
-		dishes.sort(sortType == SortType.ASC ? comparator : comparator.reversed());
-	}
+        } else if (sortType == SortType.DESC) {
 
-	class DishSorterByPrice implements Comparator<AbstractRestaurant> {
+            dishes.sort(new DishManagerUtils().new DishSorterByPrice().reversed());
 
-		@Override
-		public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
+        }
+    }
 
-			return dish1.dishPriceInHryvnias() - dish2.dishPriceInHryvnias();
-		}
-	}
+    public static void sortByPopularityAndPrice(final List<AbstractRestaurant> dishes, final SortType sortType) {
 
-	static class DishSorterByPopularity implements Comparator<AbstractRestaurant> {
+        Comparator<AbstractRestaurant> comparator = new Comparator<AbstractRestaurant>() {
 
-		@Override
-		public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
+            @Override
+            public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
 
-			return dish1.getDishPopularityIndex() - dish2.getDishPopularityIndex();
-		}
-	}
+                int popularityComparsionResult = dish1.getDishPopularityIndex() - dish2.getDishPopularityIndex();
 
-	public static void sortByCaloriesUsingLambda(final List<AbstractRestaurant> dishes, final SortType sortType) {
+                if (popularityComparsionResult != 0) {
 
-		if (sortType == SortType.ASC) {
-			
-			dishes.sort((dish1, dish2) -> dish1.getCaloriesAmount() - dish2.getCaloriesAmount());
-			
-		} else if (sortType == SortType.DESC) {
-			
-			dishes.sort((dish1, dish2) -> dish2.getCaloriesAmount() - dish1.getCaloriesAmount());
-			
-		}
-	}
+                    return popularityComparsionResult;
+
+                }
+
+                return dish1.dishPriceInHryvnias() - dish2.dishPriceInHryvnias();
+            }
+        };
+        dishes.sort(sortType == SortType.ASC ? comparator : comparator.reversed());
+    }
+
+    class DishSorterByPrice implements Comparator<AbstractRestaurant> {
+
+        @Override
+        public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
+
+            return dish1.dishPriceInHryvnias() - dish2.dishPriceInHryvnias();
+        }
+    }
+
+    static class DishSorterByPopularity implements Comparator<AbstractRestaurant> {
+
+        @Override
+        public int compare(final AbstractRestaurant dish1, final AbstractRestaurant dish2) {
+
+            return dish1.getDishPopularityIndex() - dish2.getDishPopularityIndex();
+        }
+    }
+
+    public static void sortByCaloriesUsingLambda(final List<AbstractRestaurant> dishes, final SortType sortType) {
+
+        if (sortType == SortType.ASC) {
+
+            dishes.sort((dish1, dish2) -> dish1.getCaloriesAmount() - dish2.getCaloriesAmount());
+
+        } else if (sortType == SortType.DESC) {
+
+            dishes.sort((dish1, dish2) -> dish2.getCaloriesAmount() - dish1.getCaloriesAmount());
+
+        }
+    }
 }
