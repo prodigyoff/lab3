@@ -16,33 +16,33 @@ import ua.lviv.ki.model.AbstractRestaurant;
 
 public class DishWriterTest extends BaseDishesManagerTest {
 
-    @Test
-    public void testFile() throws IOException {
-        try (Writer fileWriter = new FileWriter("Dishes.csv")) {
-            DishWriter writer = new DishWriter();
-            writer.setCsvWriter(fileWriter);
-            writer.writeToFile(dishes);
-        }
+  @Test
+  public void testFile() throws IOException {
+    try (Writer fileWriter = new FileWriter("Dishes.csv")) {
+      DishWriter writer = new DishWriter();
+      writer.setCsvWriter(fileWriter);
+      writer.writeToFile(dishes);
     }
+  }
 
-    @Test
-    public void testProperTextFormatting() throws IOException {
-        try (Writer csvWriter = new StringWriter()) {
-            DishWriter writer = new DishWriter();
-            writer.setCsvWriter(csvWriter);
+  @Test
+  public void testProperTextFormatting() throws IOException {
+    try (Writer csvWriter = new StringWriter()) {
+      DishWriter writer = new DishWriter();
+      writer.setCsvWriter(csvWriter);
 
-            List<AbstractRestaurant> dishes = new LinkedList<AbstractRestaurant>();
+      List<AbstractRestaurant> dishes = new LinkedList<AbstractRestaurant>();
 
-            writer.writeToFile(dishes);
+      writer.writeToFile(dishes);
 
-            String expectedText = "";
-            for (AbstractRestaurant dish : dishes) {
-                expectedText += dish.getHeaders() + "," + dish.toCSV() + "\r\n";
-            }
+      String expectedText = "";
+      for (AbstractRestaurant dish : dishes) {
+        expectedText += dish.getHeaders() + "," + dish.toCSV() + "\r\n";
+      }
 
-            assertEquals(expectedText, csvWriter.toString());
-            DishWriter.readFromFile("Dishes.csv");
-        }
+      assertEquals(expectedText, csvWriter.toString());
+      DishWriter.readFromFile("Dishes.csv");
     }
+  }
 
 }

@@ -9,30 +9,30 @@ import ua.lviv.ki.model.AbstractRestaurant;
 
 public class DishWriter {
 
-    private Writer csvWriter;
+  private Writer csvWriter;
 
-    public void setCsvWriter(Writer csvWriter) {
-        this.csvWriter = csvWriter;
+  public void setCsvWriter(Writer csvWriter) {
+    this.csvWriter = csvWriter;
+  }
+
+  public void writeToFile(List<AbstractRestaurant> dishes) throws IOException {
+
+    for (AbstractRestaurant dish : dishes) {
+      csvWriter.write(dish.getHeaders());
+      csvWriter.write(dish.toCSV());
+      csvWriter.write("\r\n");
     }
+    csvWriter.flush();
+  }
 
-    public void writeToFile(List<AbstractRestaurant> dishes) throws IOException {
+  public static void readFromFile(String file) throws IOException {
+    try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      String readText = "";
+      while ((readText = reader.readLine()) != null) {
+        System.out.println(readText);
+      }
 
-        for (AbstractRestaurant dish : dishes) {
-            csvWriter.write(dish.getHeaders());
-            csvWriter.write(dish.toCSV());
-            csvWriter.write("\r\n");
-        }
-        csvWriter.flush();
     }
-
-    public static void readFromFile(String file) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String readText = "";
-            while ((readText = reader.readLine()) != null) {
-                System.out.println(readText);
-            }
-
-        }
-    }
+  }
 
 }
