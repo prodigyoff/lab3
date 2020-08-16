@@ -1,6 +1,9 @@
 package ua.lviv.ki.model;
 
-public abstract class AbstractDishes extends AbstractRestaurant {
+import javax.persistence.Entity;
+
+@Entity
+public abstract class AbstractDishes extends AbstractRestaurant {   
 
   protected int portionWeightInGrams;
 

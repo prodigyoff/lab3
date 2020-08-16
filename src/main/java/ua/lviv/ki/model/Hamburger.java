@@ -1,5 +1,8 @@
 package ua.lviv.ki.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Hamburger extends AbstractDishes {
 
   private int cutletsAmount;
