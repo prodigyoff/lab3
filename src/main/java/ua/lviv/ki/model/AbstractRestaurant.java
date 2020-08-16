@@ -1,73 +1,91 @@
 package ua.lviv.ki.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public abstract class AbstractRestaurant {
-    protected int caloriesAmount;
-    protected int dishPopularityIndex;
-    protected int dishPriceInHryvnias;
-    protected String dishName;
-    protected DishType dishType;
+  protected int caloriesAmount;
+  protected int dishPopularityIndex;
+  protected int dishPriceInHryvnias;
+  protected String dishName;
+  protected DishType dishType;
+  
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  protected Integer dishId;
 
-    public AbstractRestaurant() {
+  public AbstractRestaurant() {
 
-    }
+  }
 
-    public AbstractRestaurant(int caloriesAmount, int dishPopularityIndex, int dishPriceInHryvnias, String dishName,
-            DishType dishType) {
-        this.caloriesAmount = caloriesAmount;
-        this.dishPopularityIndex = dishPopularityIndex;
-        this.dishPriceInHryvnias = dishPriceInHryvnias;
-        this.dishName = dishName;
-        this.dishType = dishType;
-    }
+  public AbstractRestaurant(int caloriesAmount, int dishPopularityIndex, int dishPriceInHryvnias, String dishName,
+      DishType dishType, Integer dishId) {
+    this.caloriesAmount = caloriesAmount;
+    this.dishPopularityIndex = dishPopularityIndex;
+    this.dishPriceInHryvnias = dishPriceInHryvnias;
+    this.dishName = dishName;
+    this.dishType = dishType;
+    this.dishId = dishId;
+  }
 
-    public String getHeaders() {
-        return "caloriesAmount,dishPopularityIndex,dishPriceInHryvnias,dishName,dishType";
-    }
+  public String getHeaders() {
+    return "caloriesAmount,dishPopularityIndex,dishPriceInHryvnias,dishName,dishType";
+  }
 
-    public String toCSV() {
-        return "Calories amount:" + caloriesAmount + "," + "Popularity index: " + dishPopularityIndex + ","
-                + "Price in hryvnias: " + dishPriceInHryvnias + "," + "Dish name: " + dishName + "," + "Dish type: "
-                + dishType;
-    }
+  public String toCSV() {
+    return "Calories amount:" + caloriesAmount + "," + "Popularity index: " + dishPopularityIndex + ","
+        + "Price in hryvnias: " + dishPriceInHryvnias + "," + "Dish name: " + dishName + "," + "Dish type: " + dishType;
+  }
 
-    public int getCaloriesAmount() {
-        return caloriesAmount;
-    }
+  public Integer getDishId() {
+    return dishId;
+  }
 
-    public void setCaloriesAmount(final int caloriesAmount) {
-        this.caloriesAmount = caloriesAmount;
-    }
+  public void setDishId(Integer dishId) {
+    this.dishId = dishId;
+  }
 
-    public int getDishPopularityIndex() {
-        return dishPopularityIndex;
-    }
+  public int getCaloriesAmount() {
+    return caloriesAmount;
+  }
 
-    public int dishPriceInHryvnias() {
-        return dishPriceInHryvnias;
-    }
+  public void setCaloriesAmount(final int caloriesAmount) {
+    this.caloriesAmount = caloriesAmount;
+  }
 
-    public String getDishName() {
-        return dishName;
-    }
+  public int getDishPopularityIndex() {
+    return dishPopularityIndex;
+  }
 
-    public DishType getDishType() {
-        return dishType;
-    }
+  public void setDishPriceInHryvnias(int dishPriceInHryvnias) {
+    this.dishPriceInHryvnias = dishPriceInHryvnias;
+  }
 
-    public void setDishPopularityIndex(final int dishPopularityIndex) {
-        this.dishPopularityIndex = dishPopularityIndex;
-    }
+  public int getDishPriceInHryvnias() {
+    return dishPriceInHryvnias;
+  }
 
-    public void setDishPriceInUAH(final int dishPriceInHryvnias) {
-        this.dishPriceInHryvnias = dishPriceInHryvnias;
-    }
+  public String getDishName() {
+    return dishName;
+  }
 
-    public void setDishName(final String dishName) {
-        this.dishName = dishName;
-    }
+  public DishType getDishType() {
+    return dishType;
+  }
 
-    public void setDishType(final DishType dishType) {
-        this.dishType = dishType;
-    }
+  public void setDishPopularityIndex(final int dishPopularityIndex) {
+    this.dishPopularityIndex = dishPopularityIndex;
+  }
+
+  public void setDishName(final String dishName) {
+    this.dishName = dishName;
+  }
+
+  public void setDishType(final DishType dishType) {
+    this.dishType = dishType;
+  }
 
 }
